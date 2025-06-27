@@ -1,0 +1,66 @@
+.tile-box {
+  border: solid;
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  box-shadow:
+    0 1px 1px hsl(0deg 0% 0% / 0.075),
+    0 2px 2px hsl(0deg 0% 0% / 0.075),
+    0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075),
+    0 16px 16px hsl(0deg 0% 0% / 0.075);
+  text-transform: capitalize;
+
+  /* Alignment */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.red {
+  background: radial-gradient(circle at center, #ff4500 0%, #8b0000 100%);
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+  border: 2px solid rgba(255, 0, 0, 0.7);
+}
+.yellow {
+  background: radial-gradient(
+    circle at center,
+    #ffd700 0%,
+    #b8860b 100%
+  ); /* Gold to DarkGoldenrod */
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); /* Matching shadow */
+  border: 2px solid rgba(255, 215, 0, 0.7); /* Matching border */
+}
+.green {
+  background: radial-gradient(
+    circle at center,
+    #32cd32 0%,
+    #006400 100%
+  ); /* LimeGreen to DarkGreen */
+  box-shadow: 0 0 10px rgba(50, 205, 50, 0.5); /* Matching shadow */
+  border: 2px solid rgba(50, 205, 50, 0.7); /* Matching border */
+}
+
+.tile-box > h1 {
+  font-size: 4rem;
+}
+
+/* Ai shit */
+.pop-animation {
+  animation: pop-win 0.5s ease forwards;
+}
+
+@keyframes pop-win {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0px #6aaa64;
+  }
+  50% {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px #6aaa64;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0px #6aaa64;
+  }
+}
