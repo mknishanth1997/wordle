@@ -1,82 +1,85 @@
-🟩 Wordle Clone (React)
-A simple but complete Wordle clone built using React and only useState for state management — made just 20 days into learning React!
+# 🟩 Wordle Clone (React)
 
-This project was my first real dive into component architecture, UI logic, and prop/state management in React. No external libraries, no context, no reducers — just pure useState, JSX, and a lot of hard-learned lessons. Built with Vite and deployed to GitHub Pages.
+> A simple but complete Wordle clone built using **React** and only `useState` for state management — made just **20 days** into learning React!
 
-🧩 Components Breakdown
-📦 Main Structure
-Wordle (Root Component)
+This project was my first real dive into component architecture, UI logic, and prop/state management in React. No external libraries, no context, no reducers — just pure `useState`, JSX, and a lot of hard-learned lessons. Built with **Vite** and deployed to **GitHub Pages**.
 
-WordleGrid
+---
 
-Row
+## 🧩 Components Breakdown
 
-Tile
+### 📦 Main Structure
 
-InputField
+- `Wordle` (Root Component)
+  - `WordleGrid`
+    - `Row`
+      - `Tile`
+  - `InputField`
+  - `SuccessScreen` / `FailureScreen`
 
-SuccessScreen / FailureScreen
+### ⚙️ Data Flow
 
-⚙️ Data Flow
-All core state (game board, round, win status) is maintained in the Wordle component.
+- All core state (game board, round, win status) is maintained in the `Wordle` component.
+- State is passed down via props to child components for rendering (`WordleGrid → Row → Tile`) and logic (`InputField`).
+- `InputField` processes the input, triggers game logic, and updates the board and game state.
+- Win/loss state is handled via a `screenIndex` that dynamically switches UI screens.
+- Winning animations and dynamic class changes are all controlled through `useState`.
 
-State is passed down via props to child components for rendering (WordleGrid → Row → Tile) and logic (InputField).
+---
 
-InputField processes the input, triggers game logic, and updates the board and game state.
+## 🧠 What I Learned
 
-Win/loss state is handled via a screenIndex that dynamically switches UI screens.
+### 1. 🗝️ The Importance of Keys
 
-Winning animations and dynamic class changes are all controlled through useState.
+I underestimated React `key` props. I thought I was assigning unique keys — turns out I wasn't. Empty objects (`{}`) and missing `key` values caused React to render incorrectly, leading to weird UI bugs and re-renders. Now I never ignore keys.
 
-🧠 What I Learned
+### 2. 🔥 Prop Drilling Hell
 
-1. 🗝️ The Importance of Keys
-   I underestimated React key props. I thought I was assigning unique keys — turns out I wasn't. Empty objects ({}) and missing key values caused React to render incorrectly, leading to weird UI bugs and re-renders. Now I never ignore keys.
+At first, I thought a single state would be enough. But as complexity grew, I ended up juggling **11+ states**, drilling them down **3–4 component layers deep**. It taught me the limits of `useState` and the importance of state architecture and planning. Time to learn `useContext` and `useReducer`.
 
-2. 🔥 Prop Drilling Hell
-   At first, I thought a single state would be enough. But as complexity grew, I ended up juggling 11+ states, drilling them down 3–4 component layers deep. It taught me the limits of useState and the importance of state architecture and planning. Time to learn useContext and useReducer.
+### 3. 🧨 `console.log()` Lies
 
-3. 🧨 console.log() Lies
-   Logging state mid-update confused me badly. I expected console.log() to reflect the latest value right after setting state, but it doesn’t — it logs the value at the time of render, not after updates. Caused me a day of confusion.
+Logging state mid-update confused me badly. I expected `console.log()` to reflect the latest value right after setting state, but it doesn’t — it logs the value at the time of render, not after updates. Caused me a day of confusion.
 
-4. 🌀 Deep Copy vs Shallow Copy
-   My game logic needed a deep clone of the answer array. I knew basic cloning, but not for nested objects. structuredClone() saved me. Without it, React kept mutating shared state and broke the game logic.
+### 4. 🌀 Deep Copy vs Shallow Copy
 
-5. 🧾 The Value of Typing
-   Updating the wrong part of a deeply nested structure caused subtle bugs. I realized how TypeScript could've prevented 90% of those errors. Will definitely explore TS next.
+My game logic needed a deep clone of the answer array. I knew basic cloning, but not for nested objects. `structuredClone()` saved me. Without it, React kept mutating shared state and broke the game logic.
 
-🚀 Stack
-React (Functional Components)
+### 5. 🧾 The Value of Typing
 
-Vite (Build Tool)
+Updating the wrong part of a deeply nested structure caused subtle bugs. I realized how TypeScript could've prevented 90% of those errors. Will definitely explore TS next.
 
-CSS (Animations, Transitions)
+---
 
-GitHub Pages (Deployment)
+## 🚀 Stack
 
-✅ Features
-Wordle-like game with:
+- React (Functional Components)
+- Vite (Build Tool)
+- CSS (Animations, Transitions)
+- GitHub Pages (Deployment)
 
-Green (correct), Yellow (present), Red (absent) tile status
+---
 
-Full 6x5 grid gameplay
+## ✅ Features
 
-Success/failure end screens
+- Wordle-like game with:
+  - Green (correct), Yellow (present), Red (absent) tile status
+  - Full 6x5 grid gameplay
+  - Success/failure end screens
+  - Animations on win and loss
+  - Fully responsive UI
 
-Animations on win and loss
+---
 
-Fully responsive UI
+## 🌱 Future Improvements
 
-🌱 Future Improvements
-Replace prop drilling with useContext
+- Replace prop drilling with `useContext`
+- Refactor game logic into a custom `useWordleLogic` hook
+- Add sound effects
+- Add TypeScript for better structure
+- Track guess history and shareable scores
 
-Refactor game logic into a custom useWordleLogic hook
+---
 
-Add sound effects
-
-Add TypeScript for better structure
-
-Track guess history and shareable scores
-
-Made with pure frustration, passion, and console.log() abuse.
-Day 20 of React — many more to come. 🚀
+Made with pure frustration, passion, and `console.log()` abuse.  
+**Day 20 of React — many more to come.** 🚀
