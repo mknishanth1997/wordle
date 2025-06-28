@@ -1,5 +1,5 @@
-import { Row } from "../Row/Row";
-import "./wordle-grid.css";
+import { Row } from '../Row/Row';
+import './wordle-grid.css';
 
 export function WordleGrid({ fullArray, setWinningRowIndex, winningRowIndex }) {
   return (

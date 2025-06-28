@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { InputField } from "../Input-Field/InputField";
-import { WordleGrid } from "../WordleGrid/wordle-grid";
-import "./Wordle.css";
+import { useState } from 'react';
+import { InputField } from '../Input-Field/InputField';
+import { WordleGrid } from '../WordleGrid/wordle-grid';
+import './Wordle.css';
+import { give5LetterWord } from '../word-dictionary/word-list';
 
 export function Wordle() {
   const [screenIndex, setScreenIndex] = useState(0); // 0 = game, 1 = fail, 2 = success
@@ -22,14 +23,16 @@ export function Wordle() {
     setScreenIndex(1);
     setGameWon(false);
   }
-  let answer = [
-    { letter: "a", position: 1 },
-    { letter: "p", position: 2 },
-    { letter: "p", position: 3 },
-    { letter: "l", position: 4 },
-    { letter: "e", position: 5 },
-  ];
-  let answerString = "apple";
+  // let answerString = 'apple';
+  // let answer = [
+  //   { letter: 'a', position: 1 },
+  //   { letter: 'p', position: 2 },
+  //   { letter: 'p', position: 3 },
+  //   { letter: 'l', position: 4 },
+  //   { letter: 'e', position: 5 },
+  // ];
+  const [result, setResult] = useState(give5LetterWord());
+  const [answerString, answer] = result;
   let screen = [
     <GameScreen
       gameBoard={gameBoard}
@@ -46,6 +49,7 @@ export function Wordle() {
     <FailureScreen answer={answerString}></FailureScreen>,
     <SucessScreen answer={answerString}></SucessScreen>,
   ];
+  console.log(answerString);
 
   return (
     <>
