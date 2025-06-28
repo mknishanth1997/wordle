@@ -1,5 +1,7 @@
 # 🟩 Wordle Clone (React)
 
+🔗 **Live Demo:** [Play Wordle here](https://mknishanth1997.github.io/wordle)
+
 > A simple but complete Wordle clone built using **React** and only `useState` for state management — made just **20 days** into learning React!
 
 This project was my first real dive into component architecture, UI logic, and prop/state management in React. No external libraries, no context, no reducers — just pure `useState`, JSX, and a lot of hard-learned lessons. Built with **Vite** and deployed to **GitHub Pages**.
